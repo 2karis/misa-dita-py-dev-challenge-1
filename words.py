@@ -5,19 +5,17 @@ def uppercase(matchobj):
 def capitalize(s):
     return re.sub('^([a-z])|[\.|\?|\!]\s*([a-z])|\s+([a-z])(?=\.)', uppercase, s)
 
+def replace(matchobj):
+    return matchobj.group(0) + ' ';
+
+def space(s):
+    return re.sub('[.?!,!:;]', replace, s) 
 words = input()
-words.capitalize()
-words.replace(".", ". ")
-words.replace(" .", ".")
-words = words.replace(",", ", ")
-words = words.replace(".", ". ")
-words = words.replace("!", "! ")
-words = words.replace(",", ", ")
-words = words.replace(",", ", ")
-words = words.replace(":", ": ")
-words = words.replace(";", "; ")
+
+words = space(words)
 words = capitalize(words)
 
 words = ' '.join(words.split())
 
 print(words)
+
